@@ -1,0 +1,43 @@
+# This .gitignore file should be placed at the root of your Unity project directory
+#
+# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
+#
+/Unity UI interface/3RD year project//[Ll]ibrary/
+/Unity UI interface/3RD year project//[Tt]emp/
+/Unity UI interface/3RD year project//[Oo]bj/
+/Unity UI interface/3RD year project//[Bb]uild/
+/Unity UI interface/3RD year project//[Bb]uilds/
+/Unity UI interface/3RD year project//[Ll]ogs/
+/Unity UI interface/3RD year project//[Uu]ser[Ss]ettings/
+
+# MemoryCaptures can get excessive in size.
+# They also could contain extremely sensitive data
+/Unity UI interface/3RD year project//[Mm]emoryCaptures/
+
+
+# Visual Studio cache directory
+/Unity UI interface/3RD year project/.vs/
+
+
+
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+
+
+# Packed Addressables
+/Unity UI interface/3RD year project//[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa.meta
+/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa/*
