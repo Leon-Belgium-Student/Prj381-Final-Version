@@ -41,3 +41,6 @@ sysinfo.txt
 # Temporary auto-generated Android Assets
 /Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa.meta
 /Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa/*
+Unity UI interface/3RD year project/Library
+Unity UI interface/3RD year project/obj
+Unity UI interface/3RD year project/UserSettings
