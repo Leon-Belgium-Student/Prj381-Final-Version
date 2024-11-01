@@ -1,14 +1,17 @@
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
-/Unity UI interface/3RD year project//[Ll]ibrary/
+
 /Unity UI interface/3RD year project//[Tt]emp/
-/Unity UI interface/3RD year project//[Oo]bj/
-/Unity UI interface/3RD year project//[Bb]uild/
-/Unity UI interface/3RD year project//[Bb]uilds/
 /Unity UI interface/3RD year project//[Ll]ogs/
-/Unity UI interface/3RD year project//[Uu]ser[Ss]ettings/
+
+
+/Unity UI interface/3RD year project//[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa.meta
+/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa/*
+Unity UI interface/3RD year project/Library
+Unity UI interface/3RD year project/obj
+Unity UI interface/3RD year project/UserSettings
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -34,13 +37,3 @@ sysinfo.txt
 *.aab
 *.unitypackage
 
-
-# Packed Addressables
-/Unity UI interface/3RD year project//[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-
-# Temporary auto-generated Android Assets
-/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa.meta
-/Unity UI interface/3RD year project//[Aa]ssets/[Ss]treamingAssets/aa/*
-Unity UI interface/3RD year project/Library
-Unity UI interface/3RD year project/obj
-Unity UI interface/3RD year project/UserSettings
