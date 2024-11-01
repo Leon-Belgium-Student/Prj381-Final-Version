@@ -11,13 +11,39 @@ public class RestAPI : MonoBehaviour
     public Text resultText;
     public Text confidenceText;
     private string uploadUrl = "http://127.0.0.1:8000/predict";
+    public WaitForServer serverBtnInteraction;
+
+    public bool StartedUpload = false;
+
+    private void Update()
+    {
+        if (serverBtnInteraction != null && !StartedUpload)
+        {
+            confidenceText.text = "";
+            if (!serverBtnInteraction.WaitDone && !serverBtnInteraction.WaitStarted)
+            {
+                resultText.text = "Please start the server to process the images";
+            }
+            else if (!serverBtnInteraction.WaitDone && serverBtnInteraction.WaitStarted)
+            {
+                resultText.text = "Server is starting please wait for your cmd to finish";
+            }
+            else
+            {
+                resultText.text = "Upload a image to start";
+            }
+        }
+    }
 
     // Method to call when uploading
     public void UploadImage(string filePathFromImage)
-    {        
+    {
+        StartedUpload = true;
         if (string.IsNullOrEmpty(filePathFromImage))
         {
             resultText.text = "Please enter the file path.";
+            confidenceText.text = "";
+
             return;
         }
         StartCoroutine(UploadImageCoroutine(filePathFromImage));
@@ -25,9 +51,12 @@ public class RestAPI : MonoBehaviour
 
     public void UploadImage()
     {
+        StartedUpload = true;
         if (string.IsNullOrEmpty(filePathInput))
         {
             resultText.text = "Please enter the file path.";
+            confidenceText.text = "";
+
             return;
         }
         StartCoroutine(UploadImageCoroutine(filePathInput));
@@ -50,6 +79,7 @@ public class RestAPI : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
             {
                 resultText.text = $"Error: {www.error}";
+                confidenceText.text = "";
             }
             else
             {
@@ -63,18 +93,9 @@ public class RestAPI : MonoBehaviour
                 // Display results
                 resultText.text = $"Class: {classValue}";
 
-                //Debug.Log(confidenceValue);
-                //Debug.Log(confidenceValue.GetType());
-                //Debug.Log(confidenceLevel);
-                //confidenceText.text = $"Confidence: {confidenceLevel}%";
 
                 char[] ConArray = confidenceValue.ToCharArray();
-
-                //Debug.Log($" the loop confidence is {confidenceValue}");
-                //Debug.Log($" the classification is {classValue}");
-
                 string finalConfidence = "";
-
 
                 int loopMax = ConArray.Length;
                 int loopCounter = 0;
@@ -86,12 +107,8 @@ public class RestAPI : MonoBehaviour
                 {
                     loopCounter = loopMax;
                 }
-
-                //Debug.Log($" the loop counter is {loopCounter}");
-                //Debug.Log($" the loop max is {loopMax}");
                 for (int i = 2; i < loopCounter; i++)
                 {
-                    //Debug.Log("string manipulation start");
                     if (i!= 4)
                     {
                         finalConfidence = finalConfidence + ConArray[i];
@@ -100,9 +117,7 @@ public class RestAPI : MonoBehaviour
                     {
                         finalConfidence = finalConfidence + ",";
                     }
-                    //Debug.Log(finalConfidence);
                 }
-
                 confidenceText.text = $"Confidence: {finalConfidence}%";
             }
         }

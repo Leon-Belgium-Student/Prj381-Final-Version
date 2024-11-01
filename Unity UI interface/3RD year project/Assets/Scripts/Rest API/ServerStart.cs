@@ -6,55 +6,40 @@ public class ServerStart : MonoBehaviour
 {
     // Specify the path to your .bat file here
     private string batFilePath = "C:/PythonNNApi/run.bat";
-
-    private string serverStatusFilePath;
     public bool isServerRunning { get; private set; }
+    public WaitForServer serverBtnInteraction;
 
     private void Start()
     {
-        serverStatusFilePath = Path.Combine(Application.streamingAssetsPath, "The server is up and running");
+        if (serverBtnInteraction == null)
+        {
+            serverBtnInteraction = this.GetComponent<WaitForServer>();
+        }
+        isServerRunning = ServerStarted.ServerRunning;
+        if (isServerRunning)
+        {
+            serverBtnInteraction.ActivateBtns();
+        }
+    }
 
-        // Check if the server status file exists
-        if (File.Exists(serverStatusFilePath))
+    public void StartServer()
+    {
+        if (ServerStarted.ServerRunning == false)
         {
             isServerRunning = true;
-        }
-        else
-        {
-            isServerRunning = false;
-            CreateServerStatusFile();
-            StartServer();  // Your function to start the server
+            startbatFile();
         }
     }
-    private void Update()
-    {
-            
-    }
 
-    private void CreateServerStatusFile()
-    {
-        // Create the server status file to signal that the server is running
-        File.WriteAllText(serverStatusFilePath, "The server is up and running");
-    }
-
-    private void StartServer()
-    {
-        isServerRunning = true;
-        startbatFile();
-    }
-
-    public void GoBackToHomePage()
-    {
-        // Check the server status file before starting the server again
-        if (!isServerRunning)
-        {
-            StartServer();
-        }
-    }
 
     public void startbatFile()
     {
+        ServerStarted.ServerRunning = isServerRunning;
         Application.OpenURL(batFilePath);
+        if (serverBtnInteraction != null)
+        {
+            serverBtnInteraction.StartWait();
+        }
     }
 
 }
