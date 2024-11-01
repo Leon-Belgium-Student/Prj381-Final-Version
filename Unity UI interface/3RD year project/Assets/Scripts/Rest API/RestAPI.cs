@@ -70,8 +70,8 @@ public class RestAPI : MonoBehaviour
 
                 char[] ConArray = confidenceValue.ToCharArray();
 
-                Debug.Log($" the loop confidence is {confidenceValue}");
-                Debug.Log($" the classification is {classValue}");
+                //Debug.Log($" the loop confidence is {confidenceValue}");
+                //Debug.Log($" the classification is {classValue}");
 
                 string finalConfidence = "";
 
@@ -87,11 +87,11 @@ public class RestAPI : MonoBehaviour
                     loopCounter = loopMax;
                 }
 
-                Debug.Log($" the loop counter is {loopCounter}");
-                Debug.Log($" the loop max is {loopMax}");
+                //Debug.Log($" the loop counter is {loopCounter}");
+                //Debug.Log($" the loop max is {loopMax}");
                 for (int i = 2; i < loopCounter; i++)
                 {
-                    Debug.Log("string manipulation start");
+                    //Debug.Log("string manipulation start");
                     if (i!= 4)
                     {
                         finalConfidence = finalConfidence + ConArray[i];
@@ -100,7 +100,7 @@ public class RestAPI : MonoBehaviour
                     {
                         finalConfidence = finalConfidence + ",";
                     }
-                    Debug.Log(finalConfidence);
+                    //Debug.Log(finalConfidence);
                 }
 
                 confidenceText.text = $"Confidence: {finalConfidence}%";
