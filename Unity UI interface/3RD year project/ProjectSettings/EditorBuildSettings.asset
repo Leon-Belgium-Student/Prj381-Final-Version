@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProjectCharter.unity
     guid: f58197655ff2622409da0ae279c5dbd3
+  - enabled: 1
+    path: Assets/Scenes/TeamMembers.unity
+    guid: 3db2f514022181142ad9c7909d644448
   m_configObjects: {}
